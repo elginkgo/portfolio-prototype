@@ -1,23 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 :root {
-    --bg-white: #F8F9FA;
-    --primary-green: #1B4332;
-    --secondary-green: #344E41;
-    --text-ink: #081C15;
-    --text-muted: #555;
-    --white: #ffffff;
+    --bg-cream: #F5F4E0;
+    --bg-ivory: #FAF9EC;
+    --deep-forest: #1A3D2B;
+    --forest-night: #0D2118;
+    --text-body: #2D6A4F;
+    --text-muted: #444;
+    --sky-blue: #72C4E8;
+    --earth-brown: #7B5E4F;
+    --sand: #C8956A;
+    --cream: #F5F4E0;
+
+    --bg-white: var(--bg-cream);
+    --primary-green: var(--deep-forest);
+    --secondary-green: var(--forest-night);
+    --text-ink: var(--deep-forest);
+    --white: var(--bg-ivory);
     --font-main: 'DM Sans', sans-serif;
     --transition: all 0.3s ease;
 }
 
 [data-theme="dark"] {
-    --bg-white: #081C15;
-    --primary-green: #2D6A4F;
-    --secondary-green: #40916C;
-    --text-ink: #F8F9FA;
+    --bg-white: #0D2118;
+    --primary-green: #72C4E8;
+    --secondary-green: #C8956A;
+    --text-ink: #F5F4E0;
     --text-muted: #A3B18A;
-    --white: #1B4332;
+    --white: #1A3D2B;
 }
 
 * {
@@ -29,7 +39,7 @@
 body {
     font-family: var(--font-main);
     background-color: var(--bg-white);
-    color: var(--text-ink);
+    color: var(--text-body);
     line-height: 1.6;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -114,7 +124,7 @@ nav {
 }
 
 .nav-links a:hover {
-    color: var(--primary-green);
+    color: var(--sky-blue);
 }
 
 /* Container */
@@ -134,40 +144,70 @@ section {
     display: inline-block;
     padding: 0.8rem 2rem;
     background-color: var(--primary-green);
-    color: var(--white);
+    color: var(--bg-cream);
     text-decoration: none;
     border-radius: 4px;
     font-weight: 600;
     transition: var(--transition);
-    border: none;
+    border: 2px solid var(--primary-green);
     cursor: pointer;
 }
 
 .btn:hover {
-    background-color: var(--secondary-green);
+    background-color: var(--sand);
+    border-color: var(--sand);
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(27, 67, 50, 0.2);
+    box-shadow: 0 4px 15px rgba(200, 149, 106, 0.3);
+}
+
+.btn-ghost {
+    background-color: var(--bg-cream);
+    color: var(--primary-green);
+    border: 2px solid var(--primary-green);
+}
+
+.btn-ghost:hover {
+    background-color: var(--sand);
+    color: var(--bg-cream);
+    border-color: var(--sand);
+}
+
+/* Tags/Badges */
+.tag {
+    display: inline-block;
+    padding: 0.2rem 0.8rem;
+    background-color: var(--earth-brown);
+    color: var(--bg-cream);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 /* Hero Section */
 .hero {
-    height: 80vh;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: var(--forest-night);
+    color: var(--bg-cream);
+    margin: 0 -5%;
+    padding: 5rem 5%;
 }
 
 .hero h1 {
     font-size: 4rem;
     margin-bottom: 1rem;
-    color: var(--primary-green);
+    color: var(--bg-cream);
 }
 
 .hero p {
     font-size: 1.5rem;
-    color: var(--text-muted);
+    color: var(--sky-blue);
     margin-bottom: 2rem;
     max-width: 600px;
 }
@@ -192,6 +232,7 @@ section {
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    border-color: var(--sand);
 }
 
 .card h3 {
@@ -199,17 +240,31 @@ section {
     margin-bottom: 1rem;
 }
 
+/* Typography Overrides */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-ink);
+}
+
+a {
+    color: var(--sky-blue);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--sand);
+}
+
 /* Footer */
 footer {
-    padding: 3rem 0;
+    padding: 4rem 0;
     text-align: center;
-    background: var(--primary-green);
-    color: var(--white);
+    background: var(--forest-night);
+    color: var(--bg-cream);
     margin-top: 5rem;
 }
 
 footer p {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 /* Mobile Nav Toggle */
