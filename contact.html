@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Chawapol Tang</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .contact-item span {
+            font-weight: 600;
+            color: var(--primary-green);
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">CT.</a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section style="max-width: 600px;">
+            <h1 style="color: var(--primary-green); margin-bottom: 1rem;">Get In Touch</h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">I'm always open to discussing new opportunities, sustainability projects, or ways we can collaborate to make a positive impact.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>Email</span>
+                    <a href="mailto:chawapol.tang@example.com" style="color: var(--text-ink); text-decoration: none;">chawapol.tang@example.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>LinkedIn</span>
+                    <a href="https://linkedin.com/in/chawapol-tang" target="_blank" style="color: var(--text-ink); text-decoration: none;">linkedin.com/in/chawapol-tang</a>
+                </div>
+                <div class="contact-item">
+                    <span>GitHub</span>
+                    <a href="https://github.com/chawapol" target="_blank" style="color: var(--text-ink); text-decoration: none;">github.com/chawapol</a>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <p style="font-weight: 500; margin-bottom: 1rem;">Send me a message directly</p>
+                <form onsubmit="event.preventDefault(); alert('Message sent! Thank you.');" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <input type="text" placeholder="Your Name" style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; font-family: inherit;">
+                    <input type="email" placeholder="Your Email" style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; font-family: inherit;">
+                    <textarea placeholder="Your Message" rows="5" style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; font-family: inherit;"></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Chawapol Tang. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
