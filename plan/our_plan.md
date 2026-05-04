@@ -31,9 +31,9 @@ Create a professional, "modern white and rich green" themed portfolio that showc
     - **Brief Bio:** Highlighting the role of a Sustainability Analyst.
 2. **Develop `projects.html`:**
     - Create a grid layout for 3 projects:
-        - **Project 1:** *Life Cycle Assessment (LCA) of Sustainable Packaging*
-        - **Project 2:** *Corporate Decarbonization Roadmap 2030*
-        - **Project 3:** *ESG Performance & Supply Chain Transparency*
+        - **Project 1:** *RECs Tokenization Framework*
+        - **Project 2:** *Sales Strategy Analytics Pipeline*
+        - **Project 3:** *RECs Inventory Reconciliation*
     - Each project will have a title, brief description, and placeholder for an image.
 3. **Develop `contact.html`:**
     - Modern layout with contact details (Email, LinkedIn, GitHub).
