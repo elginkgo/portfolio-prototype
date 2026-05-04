@@ -12,6 +12,7 @@
         <div class="nav-right">
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -38,6 +39,15 @@
                 As a Sustainability Analyst, I believe that every decision we make today ripples through the generations of tomorrow. My mission is to help organizations transition from traditional models to circular, sustainable practices that prioritize both the planet and long-term prosperity.
             </p>
         </section>
+        <section class="latest-writing">
+            <h2 style="color: var(--primary-green); text-align: center; margin-bottom: 2rem;">Latest Writing</h2>
+            <div class="grid" id="latest-posts-grid">
+                <!-- Posts will be loaded here -->
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="blog.html" class="btn">View All Posts</a>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -45,5 +55,30 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+        async function loadLatestPosts() {
+            try {
+                const response = await fetch('content/posts.json');
+                const posts = await response.json();
+                const latest = posts.slice(0, 3);
+                
+                const grid = document.getElementById('latest-posts-grid');
+                grid.innerHTML = latest.map(post => `
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <span class="tag">${post.category}</span>
+                            <span style="font-size: 0.85rem; color: var(--text-muted);">${new Date(post.date).toLocaleDateString()}</span>
+                        </div>
+                        <h3>${post.title}</h3>
+                        <p style="color: var(--text-body); font-size: 0.95rem; margin-bottom: 1.5rem;">${post.excerpt}</p>
+                        <a href="post.html?p=${post.slug}" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Read More</a>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading latest posts:', error);
+            }
+        }
+        window.onload = loadLatestPosts;
+    </script>
 </body>
 </html>

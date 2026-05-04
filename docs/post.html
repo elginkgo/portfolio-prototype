@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post | Chawapol Tang</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        .post-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .post-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .post-category {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--earth-brown);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .post-title {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .post-date {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        .post-content {
+            line-height: 1.8;
+            font-size: 1.15rem;
+        }
+        .post-content h2, .post-content h3 {
+            margin: 2.5rem 0 1rem;
+            color: var(--primary-green);
+        }
+        .post-content p {
+            margin-bottom: 1.5rem;
+        }
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .post-content blockquote {
+            border-left: 4px solid var(--sand);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--secondary-green);
+        }
+        .post-content ul, .post-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .post-content li {
+            margin-bottom: 0.5rem;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover {
+            color: var(--sand);
+        }
+        
+        @media (max-width: 768px) {
+            .post-container {
+                padding: 1.5rem;
+                margin: 2rem auto;
+            }
+            .post-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">CT.</a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <article class="post-container">
+            <a href="blog.html" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Back to Blog
+            </a>
+            <header class="post-header">
+                <span class="post-category" id="post-category">Category</span>
+                <h1 class="post-title" id="post-title">Loading...</h1>
+                <p class="post-date" id="post-date">May 4, 2026</p>
+            </header>
+            <div id="content" class="post-content">
+                <!-- Markdown content will be rendered here -->
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Chawapol Tang. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        async function loadPost() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get('p');
+            
+            if (!slug) {
+                window.location.href = 'blog.html';
+                return;
+            }
+
+            try {
+                // Fetch registry to get metadata
+                const response = await fetch('content/posts.json');
+                const posts = await response.json();
+                const postMetadata = posts.find(p => p.slug === slug);
+                
+                if (!postMetadata) {
+                    document.getElementById('post-title').innerText = 'Post Not Found';
+                    return;
+                }
+
+                document.title = `${postMetadata.title} | Chawapol Tang`;
+                document.getElementById('post-title').innerText = postMetadata.title;
+                document.getElementById('post-category').innerText = postMetadata.category;
+                document.getElementById('post-date').innerText = new Date(postMetadata.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                // Fetch markdown file
+                const mdResponse = await fetch(`content/posts/${slug}.md`);
+                const mdContent = await mdResponse.text();
+                
+                // Render Markdown
+                document.getElementById('content').innerHTML = marked.parse(mdContent);
+                
+            } catch (error) {
+                console.error('Error loading post:', error);
+                document.getElementById('post-title').innerText = 'Error loading post';
+            }
+        }
+
+        window.onload = loadPost;
+    </script>
+</body>
+</html>
