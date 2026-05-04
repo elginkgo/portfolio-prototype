@@ -18,20 +18,22 @@ To provide a professional platform highlighting data-driven insights and strateg
 
 ## 📂 Project Structure
 ```text
-├── index.html          # Home Page
-├── projects.html       # Portfolio of Work
-├── contact.html        # Contact Page
-├── css/
-│   └── style.css       # Centralized Styling & Variables
-├── js/
-│   └── main.js        # Interactivity & Theme Logic
-├── assets/             # Images and Icons
+├── docs/               # Web Content (GitHub Pages source)
+│   ├── index.html      # Home Page
+│   ├── projects.html   # Portfolio of Work
+│   ├── contact.html    # Contact Page
+│   ├── css/
+│   │   └── style.css   # Centralized Styling & Variables
+│   ├── js/
+│   │   └── main.js    # Interactivity & Theme Logic
+│   └── assets/         # Images and Icons
+├── README.md           # Project Overview
 └── plan/
     └── our_plan.md     # Original Development Plan
 ```
 
 ## 🛠️ Setup
-Simply clone the repository and open `index.html` in your browser.
+Simply clone the repository and open `docs/index.html` in your browser.
 ```bash
 git clone https://github.com/elginkgo/portfolio-prototype.git
 cd portfolio-prototype
